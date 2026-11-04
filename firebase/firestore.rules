@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    match /tutorials/{id} {
+      allow read: if isAdmin() || resource.data.published == true;
+      allow write: if isAdmin();
+    }
+    match /tutorialCategories/{id} {
+      allow read: if isAdmin() || resource.data.published == true;
+      allow write: if isAdmin();
+    }
+    match /updates/{id} {
+      allow read: if isAdmin() || resource.data.published == true;
+      allow write: if isAdmin();
+    }
+    match /faqs/{id} {
+      allow read: if isAdmin() || resource.data.published == true;
+      allow write: if isAdmin();
+    }
+    match /faqCategories/{id} {
+      allow read: if isAdmin() || resource.data.published == true;
+      allow write: if isAdmin();
+    }
+    match /websiteSettings/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /bugReports/{id} {
+      allow read, update, delete: if isAdmin();
+      allow create: if
+        request.resource.data.keys().hasOnly([
+          'name', 'email', 'category', 'subject', 'description',
+          'screenshotUrl', 'status', 'createdAt'
+        ]) &&
+        request.resource.data.keys().hasAll([
+          'name', 'email', 'category', 'subject', 'description',
+          'screenshotUrl', 'status', 'createdAt'
+        ]) &&
+        request.resource.data.name is string &&
+        request.resource.data.name.size() >= 2 &&
+        request.resource.data.name.size() <= 60 &&
+        request.resource.data.email is string &&
+        request.resource.data.email.size() <= 254 &&
+        request.resource.data.category in [
+          'Bug report', 'Suggestion', 'Feedback', 'General inquiry'
+        ] &&
+        request.resource.data.subject is string &&
+        request.resource.data.subject.size() >= 4 &&
+        request.resource.data.subject.size() <= 120 &&
+        request.resource.data.description is string &&
+        request.resource.data.description.size() >= 15 &&
+        request.resource.data.description.size() <= 3000 &&
+        request.resource.data.screenshotUrl is string &&
+        request.resource.data.screenshotUrl.size() <= 2048 &&
+        (request.resource.data.screenshotUrl == '' ||
+          request.resource.data.screenshotUrl.matches('^https://firebasestorage\\.googleapis\\.com/.*$')) &&
+        request.resource.data.status == 'new' &&
+        request.resource.data.createdAt == request.time;
+    }
+    match /users/{uid} {
+      allow read, write: if isAdmin() ||
+        (request.auth != null && request.auth.uid == uid);
+    }
+    match /admins/{uid} {
+      allow read, write: if isAdmin();
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
