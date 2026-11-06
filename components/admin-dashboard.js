@@ -46,7 +46,7 @@ const schemas = {
   websiteSettings: [
     ["title", "Website name"], ["description", "Short description", "textarea"],
     ["robloxUrl", "Roblox game URL"], ["discordUrl", "Discord invite URL"],
-    ["seasonalHalloweenEnabled", "Show Halloween event banner", "checkbox"],
+    ["seasonalChristmasEnabled", "Show Christmas event banner", "checkbox"],
   ],
 };
 
@@ -88,10 +88,10 @@ function Editor({ section, initial, onSave, onCancel }) {
   const [values, setValues] = useState(() => initial
     ? {
       ...initial,
-      seasonalHalloweenEnabled: initial.seasonalHalloweenEnabled ?? true,
+      seasonalChristmasEnabled: initial.seasonalChristmasEnabled ?? true,
       controls: initial.controls ? JSON.stringify(initial.controls, null, 2) : "",
     }
-    : { published: true, seasonalHalloweenEnabled: true });
+    : { published: true, seasonalChristmasEnabled: true });
   const [busy, setBusy] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");

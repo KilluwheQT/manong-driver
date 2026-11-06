@@ -90,10 +90,12 @@ a { color: inherit; text-decoration: none; }
 .community-banner { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 28px; overflow: hidden; padding: 39px 44px; border: 1px solid rgba(131,215,97,.19); border-radius: 15px; background: radial-gradient(ellipse at 83% 50%, rgba(90,177,73,.15), transparent 46%), #17221b; }
 .seasonal-section { padding: 15px 0 70px; }
 .seasonal-card { display:flex; align-items:center; justify-content:space-between; gap:25px; padding:28px 32px; border:1px solid rgba(255,212,90,.24); border-radius:13px; background:radial-gradient(ellipse at 82% 50%,rgba(215,102,51,.13),transparent 47%),#211b18; }
+.christmas-card { border-color:rgba(131,215,190,.25); background:radial-gradient(ellipse at 82% 50%,rgba(131,215,190,.13),transparent 47%),radial-gradient(ellipse at 12% 0,rgba(255,255,255,.07),transparent 37%),#17221b; }
 .seasonal-card h2 { margin:7px 0; font-size:29px; letter-spacing:-.05em; }
 .seasonal-card p { margin:0; color:#b9b1aa; font-size:13px; line-height:1.75; }
 .seasonal-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:14px; }
 .seasonal-tags span, .seasonal-label { padding:5px 8px; border:1px solid rgba(255,212,90,.2); border-radius:5px; background:rgba(255,212,90,.08); color:var(--yellow); font-size:10px; font-weight:700; }
+.christmas-card .seasonal-tags span { border-color:rgba(131,215,190,.22); background:rgba(131,215,190,.08); color:#a9e4ce; }
 .community-banner h2 { margin: 7px 0 8px; font-size: 32px; letter-spacing: -.05em; }
 .community-banner p { max-width: 530px; margin: 0; color: #aab4ab; font-size: 13px; line-height: 1.7; }
 .community-actions { display: flex; flex-wrap: wrap; gap: 9px; }

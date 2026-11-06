@@ -74,11 +74,11 @@ Only the trusted `set-admin` script uses `firebase-admin`. Admin credentials and
 ## Content and reports
 
 - Public tutorials, updates, FAQs, and categories are read from Firestore and only published documents are visible. New or edited content is managed at `/admin`. When a public collection is empty, visitors see clearly labeled sample previews; administrators can import editable copies from the overview dashboard.
-- The website settings panel controls the Roblox and Discord links shown in the navigation, footer, and home page, and can hide the seasonal Halloween banner after the event.
+- The website settings panel controls the Roblox and Discord links shown in the navigation, footer, and home page, and can hide the Christmas seasonal banner when the event ends.
 - Contact and bug-report form submissions are stored in `bugReports`; authorized administrators can review, update status, and delete entries. A screenshot is optional (JPG, PNG, or WebP, up to 5 MB).
 - `firebase/firestore.rules` allows public creates only for bounded, validated report fields; reads and changes to reports require the administrator claim. `firebase/storage.rules` restricts uploads by path, MIME type, and size.
 - Firestore rules are not a replacement for App Check: configure and enforce App Check before launching the public report/upload forms.
-- `lib/seed-data.js` contains fallback copy for local previews and the seed utility. In the admin overview, **Refresh official starter content** updates only the official guide, FAQ, category, and sample announcement documents; custom documents are left intact. After Halloween, switch off its banner in site settings and unpublish the seasonal FAQ and announcement. Edit public content through Firestore in production.
+- `lib/seed-data.js` contains fallback copy for local previews and the seed utility, including the Christmas Update and FAQ. Run `npm run seed` or use **Refresh official starter content** in the admin overview to add them to Firebase. Existing Halloween content is not deleted automatically; unpublish its FAQ and announcement in `/admin`. The Christmas banner can be shown or hidden in site settings. Edit public content through Firestore in production.
 
 ## Scripts
 

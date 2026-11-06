@@ -159,10 +159,10 @@ export function HomePage() {
           <div className="feature-grid">{features.map(({ icon: Icon, title, text }) => <article className="feature-card" key={title}><span className="feature-icon"><Icon size={20} /></span><h3>{title}</h3><p>{text}</p></article>)}</div>
         </div>
       </section>
-      {links.seasonalHalloweenEnabled !== false && <section className="seasonal-section">
-        <div className="container seasonal-card">
-          <div><span className="eyebrow">Seasonal ride</span><h2>Halloween in town.</h2><p>Ride through Blood Moon, Candle Hunt, Ghost Hunt, Trick or Treat, and the Halloween party while the seasonal event is live.</p><div className="seasonal-tags"><span>Blood Moon</span><span>Candle Hunt</span><span>Ghost Hunt · 60 ghosts</span><span>Trick or Treat</span></div></div>
-          <Link className="button button-secondary" href="/faq">Event details <ArrowRight size={15} /></Link>
+      {links.seasonalChristmasEnabled !== false && <section className="seasonal-section">
+        <div className="container seasonal-card christmas-card">
+          <div><span className="eyebrow">Christmas event · Candy Canes 🍭</span><h2>Christmas in town.</h2><p>Visit Santa House, meet the Elf, and shop for the Santa Motorcycle for 🍭 1,500 Candy Canes. Ways to earn Candy Canes are coming soon; the Santa Sleigh will be available to players soon.</p><div className="seasonal-tags"><span>Santa House</span><span>Elf&apos;s Christmas Shop</span><span>Santa Motorcycle · 🍭 1,500</span><span>Santa Sleigh · Coming soon</span></div></div>
+          <Link className="button button-secondary" href="/updates/christmas-update">Christmas update <ArrowRight size={15} /></Link>
         </div>
       </section>}
       <section className="updates-section">
